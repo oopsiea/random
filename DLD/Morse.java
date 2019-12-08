@@ -9,6 +9,12 @@ dash (-) = 11
 signal spacing () = 0
 letter spacing (_) = 000
 space (----) = 0000000
+
+TEST CASE:
+..-._..-_-.-._-.-_-----.-._---_---_.--._._.-._
+FUCK COOPER 
+FUCK COOPER
+..-._..-_-.-._-.-_----_-.-._---_---_.--._._.-._
  */
 
 import java.util.Scanner;
