@@ -1,20 +1,14 @@
 /*
 ECE150 Fall2019
-
+FirstName LastName
 Final Project: Morse Code En/Decoder
 
 4 inputs:
 dot (.) = 1
 dash (-) = 11
-signal spacing () = 0
+(signal spacing () = 0)
 letter spacing (_) = 000
-space (----) = 0000000
-
-TEST CASE:
-..-._..-_-.-._-.-_-----.-._---_---_.--._._.-._
-FUCK COOPER 
-FUCK COOPER
-..-._..-_-.-._-.-_----_-.-._---_---_.--._._.-._
+space (/) = 0000000
  */
 
 import java.util.Scanner;
@@ -25,7 +19,7 @@ public class Morse {
         Scanner scanner = new Scanner(System.in);
         // decoder
         String codes = scanner.nextLine();
-        String[] words = codes.split("----");
+        String[] words = codes.split("/");
         String[] alphabets;
 //        String[] letters = new String[100];
         int size = 0;
@@ -47,7 +41,9 @@ public class Morse {
         char[] letters = sentence.toCharArray();
         for (int i = 0; i < letters.length; i++) {
             temp = new MorseCode(letters[i]);
-            System.out.print(temp.getCode() + "_");
+            System.out.print(temp.getCode());
+            if (i != letters.length - 1 && temp.getCode() != "/")
+                System.out.print("_");
         }
 
 
@@ -70,7 +66,7 @@ public class Morse {
         public String getCode() {
             switch (this.letter) {
                 case ' ':
-                    code = "----";
+                    code = "/";
                     break;
                 case 'A':
                     code = ".-";
