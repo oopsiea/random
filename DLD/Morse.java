@@ -1,6 +1,6 @@
 /*
 ECE150 Fall2019
-Jaewon Sohn
+
 Final Project: Morse Code En/Decoder
 
 4 inputs:
