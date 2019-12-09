@@ -3,12 +3,14 @@ ECE150 Fall2019
 FirstName LastName
 Final Project: Morse Code En/Decoder
 
-4 inputs:
-dot (.) = 1
-dash (-) = 11
-(signal spacing () = 0)
-letter spacing (_) = 000
-space (/) = 0000000
+Decoder inputs:
+1) dot (.) = 1
+2) dash (-) = 11
+3) next (_) : letter spacing
+
+Encoder inputs:
+1~26) alphabets
+17) backspace
  */
 
 import java.util.Scanner;
@@ -17,9 +19,10 @@ public class Morse {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // decoder
+        
+        // Decoder (code -> letter)
         String codes = scanner.nextLine();
-        String[] words = codes.split("/");
+        String[] words = codes.split("----");
         String[] alphabets;
 //        String[] letters = new String[100];
         int size = 0;
@@ -36,19 +39,17 @@ public class Morse {
         }
         System.out.println();
 
-        //encoder
+        // Encoder (letter -> code)
         String sentence = scanner.nextLine();
         char[] letters = sentence.toCharArray();
         for (int i = 0; i < letters.length; i++) {
             temp = new MorseCode(letters[i]);
             System.out.print(temp.getCode());
-            if (i != letters.length - 1 && temp.getCode() != "/")
-                System.out.print("_");
+            System.out.print("_");
+//             if (i != letters.length - 1 && temp.getCode() != "/")
+//                 System.out.print("_");
         }
-
-
     }
-
 
     public static class MorseCode {
         private char letter;
@@ -66,7 +67,7 @@ public class Morse {
         public String getCode() {
             switch (this.letter) {
                 case ' ':
-                    code = "/";
+                    code = "----";
                     break;
                 case 'A':
                     code = ".-";
@@ -154,6 +155,9 @@ public class Morse {
 
         public char getLetter() {
             switch (this.code) {
+                case "----":
+                    letter = ' ';
+                    break;
                 case ".-":
                     letter = 'A';
                     break;
