@@ -16,6 +16,7 @@ cmd to run
 ```bash
 $ sudo chmod +x fileName.pl
 $ ./fileName.pl
+```
 
 wth does this mean
 ```perl
